@@ -5,14 +5,18 @@ const Home = ({ cakes, removeCake, editCake }) => (
   <div>
     <h2>Cakes</h2>
     <ul>
-      {cakes.map((cake) => (
-        <CakeItem
-          key={cake.id}
-          cake={cake}
-          onRemove={() => removeCake(cake.id)}
-          onEdit={() => editCake(cake.id)} 
-        />
-      ))}
+      {Array.isArray(cakes) && cakes.length > 0 ? (
+        cakes.map((cake) => (
+          <CakeItem
+            key={cake.id}
+            cake={cake}
+            onRemove={() => removeCake(cake.id)}
+            onEdit={() => editCake(cake.id)} 
+          />
+        ))
+      ) : (
+        <p>No cakes available</p>
+      )}
     </ul>
   </div>
 );

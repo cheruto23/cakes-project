@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 
 const AddCake = ({ addCake }) => {
-  const [newCake, setNewCake] = useState({ name: '', flavor: '', price: '', imageUrl: '' });
+  const [newCake, setNewCake] = useState({ category: '', flavor: '', price: '', imageUrl: '' });
   const [message, setMessage] = useState('');
 
   const handleAddCake = () => {
     if (
-      newCake.name.trim() !== '' &&
+      newCake.category.trim() !== '' &&
       newCake.flavor.trim() !== '' &&
       newCake.price.trim() !== '' &&
       newCake.imageUrl.trim() !== ''
     ) {
       addCake(newCake);
-      setNewCake({ name: '', flavor: '', price: '', imageUrl: '' });
+      setNewCake({ category: '', flavor: '', price: '', imageUrl: '' });
       setMessage('Cake added successfully!');
 
       setTimeout(() => setMessage(''), 3000);
@@ -26,14 +26,14 @@ const AddCake = ({ addCake }) => {
       <h2>Add Cake</h2>
       {message && <p className="text-success">{message}</p>}
       <div className="mb-3">
-        <label className="form-label">Name:</label>
-        <input
-          type="text"
-          className="form-control"
-          value={newCake.name}
-          onChange={(e) => setNewCake({ ...newCake, name: e.target.value })}
-        />
-      </div>
+  <label className="form-label">category:</label>
+  <input
+    type="text"
+    className="form-control"
+    value={newCake.category}
+    onChange={(e) => setNewCake({ ...newCake, category: e.target.value })} 
+  />
+</div>
       <div className="mb-3">
         <label className="form-label">Flavor:</label>
         <input
@@ -46,7 +46,7 @@ const AddCake = ({ addCake }) => {
       <div className="mb-3">
         <label className="form-label">Price:</label>
         <input
-          type="text"
+          type="number"
           className="form-control"
           value={newCake.price}
           onChange={(e) => setNewCake({ ...newCake, price: e.target.value })}
